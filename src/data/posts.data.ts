@@ -21,3 +21,4 @@ export default createContentLoader('./post/**/*.md', {
     })
   }
 })
+

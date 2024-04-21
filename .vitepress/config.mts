@@ -36,7 +36,11 @@ export default defineConfig({
   },
   async postRender(context) {
     // ...
-    console.log('context')
+    console.log('postRender - context')
+    console.log(context)
+  },
+  async transformHead(context) {
+    console.log('transformHead - context')
     console.log(context)
   },
   async transformPageData(pageData, { siteConfig }) {
@@ -47,6 +51,8 @@ export default defineConfig({
         text: '首页',
         link: '/'
       }
+    } else {
+
     }
   }
 })
