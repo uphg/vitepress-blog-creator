@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath, URL } from 'node:url'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
-  srcDir: './src',
+  srcDir: './content',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {
@@ -28,6 +29,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('../src', import.meta.url))
+      }
+    }
   },
   async buildEnd(siteConfig) {
     console.log('siteConfig')

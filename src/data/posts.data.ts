@@ -1,6 +1,6 @@
-// posts.data.js
 import { createContentLoader } from 'vitepress'
 
+// content/post/**/*.md
 export default createContentLoader('./post/**/*.md', {
   includeSrc: true, // 包含原始 markdown 源?
   render: true,     // 包含渲染的整页 HTML?
@@ -9,7 +9,7 @@ export default createContentLoader('./post/**/*.md', {
     // 根据需要对原始数据进行 map、sort 或 filter
     // 最终的结果是将发送给客户端的内容
     console.log('rawData')
-    console.log(rawData.map(item => item.url))
+    console.log(rawData)
     return rawData.sort((a, b) => {
       return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date)
     }).map((page) => {
