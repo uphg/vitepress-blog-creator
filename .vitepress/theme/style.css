@@ -137,3 +137,40 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+/**
+ * Doc 页面
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --vp-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Microsoft Yahei', 'SimHei', 'Liberation Mono', 'Courier New', monospace;
+  --aside-width: 256px;
+  /* --vt-c-text-3: rgba(60, 60, 60, .33); */
+}
+
+/* .dark {
+  --vt-c-text-3: rgba(235, 235, 235, .38);
+} */
+
+/* .VPDoc .container .content-container > .main > .vp-doc > div > h1:first-child {
+  display: none;
+} */
+
+.VPNavBar > .container {
+  max-width: 992px;
+}
+
+@media (min-width: 1440px) {
+  .VPContent > .VPDoc:not(.has-sidebar) > .container {
+    max-width: calc(784px + var(--aside-width) * 2);
+    padding-left: var(--aside-width);
+  }
+}
+
+/* unocss */
+.w-100\% {
+  width: 100%;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
