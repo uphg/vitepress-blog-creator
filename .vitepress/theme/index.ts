@@ -6,6 +6,7 @@ import About from './components/About.vue'
 import Posts from './components/Posts.vue'
 import Tags from './components/Tags.vue'
 import DocHeader from './components/DocHeader.vue'
+import Emoji from './components/Emoji.vue'
 import './style.css'
 
 export default {
@@ -13,7 +14,8 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
-      'doc-before': () => h(DocHeader)
+      'doc-before': () => h(DocHeader),
+      'nav-bar-title-after': () => h(Emoji)
     })
   },
   enhanceApp({ app, router, siteData }) {

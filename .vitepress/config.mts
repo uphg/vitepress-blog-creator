@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Uphg",
+  title: "LvHeng",
   description: "A VitePress Site",
   srcDir: './src',
   themeConfig: {

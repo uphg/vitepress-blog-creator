@@ -9,8 +9,8 @@
         <IconRoundAccessTime/>
         <span>{{ dayjs(date).format('YYYY-MM-DD') }}</span>
       </div>
-      <div v-if="tags" class="tags">
-        <Link v-for="item, index in tags" :key="index" class="tag" :to="`/tags/${item}/`">{{ item }}</Link>
+      <div v-if="_tags" class="tags">
+        <Link v-for="item, index in _tags" :key="index" class="tag" :to="`/tags/${item.path}/`">{{ item.name }}</Link>
       </div>
       <!-- <Link class="read" :to="`/post/${to}`">
         <span>查看更多</span>
@@ -21,18 +21,21 @@
 </template>
 
 <script setup lang="ts">
+import { PropType, computed } from 'vue';
 import Link from './Link.vue';
 import IconArrowRight from './icons/IconArrowRight.vue';
 import IconRoundAccessTime from './icons/IconRoundAccessTime.vue'
 import dayjs from 'dayjs'
 
-defineProps({
+const props = defineProps({
   title: String,
   description: String,
   to: String,
   date: [String, Date],
-  tags: [Array]
+  tags: [Array] as PropType<string[]>
 })
+
+const _tags = computed(() => props.tags?.map((tag) => ({ name: tag, path: tag.toLowerCase() })))
 </script>
 
 <style scoped>
