@@ -49,8 +49,6 @@ export default defineConfig({
   async transformHead(context) {
   },
   async transformPageData(pageData, { siteConfig }) {
-    console.log('pageData')
-    console.log(pageData)
     if (pageData.filePath === 'api-examples.md') {
 
       pageData.frontmatter.prev = {

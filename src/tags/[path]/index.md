@@ -3,7 +3,12 @@ layout: posts
 sidebar: false
 ---
 
-<PostsContainer :title="`标签：${$params.name}`" :next="$params.next" :prev="$params.prev" :page="$params.page" :total="$params.total">
+<PostsContainer
+  :title="`标签：${$params.name}`"
+  :next="$params.next"
+  :prev="$params.prev"
+  :page="$params.page"
+  :total="$params.total">
   <PostItem
     v-for="item, index in $params.items"
     :key="index"

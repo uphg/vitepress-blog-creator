@@ -3,7 +3,12 @@ layout: posts
 sidebar: false
 ---
 
-<PostsContainer title="博客列表" :next="data.next" :prev="data.prev" :page="data.page" :total="data.total">
+<PostsContainer
+  title="博客列表"
+  :next="data.next"
+  :prev="data.prev"
+  :page="data.page"
+  :total="data.total">
   <PostItem
     v-for="item, index in data.items"
     :key="index"

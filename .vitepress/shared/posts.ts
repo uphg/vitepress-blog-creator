@@ -17,8 +17,6 @@ export function createPagingPosts(posts, { pageSize = 10, pathPrefix = '/' }) {
     const prev = page + 1 > pageCount ? null : `${pathPrefix}${page + 1}/`
     result.push({ page: index + 1, next, prev, items })
   }
-  console.log('result[result.length - 1]')
-  console.log(result[result.length - 1])
   return result
 }
 
