@@ -15,9 +15,8 @@ layout: page
   </ul>
   <h2>Blogs</h2>
   <ul>
-    <li>Foo</li>
-    <li>Bar</li>
-    <li>...</li>
+    <li v-for="item, index in data.items" :key="index"><a :href="item.to" target="_blank">{{ item.title }}</a></li>
+    <li><a href="/posts/" target="_blank">Other (+{{data.total - 5}}) ...</a></li>
   </ul>
 </Wrap>
 
@@ -25,6 +24,7 @@ layout: page
 import { computed } from 'vue'
 import Wrap from '~theme/components/Wrap.vue'
 import Emoji from '~theme/components/Emoji.vue'
+import { data } from './index.data'
 </script>
 
 <style scoped>
