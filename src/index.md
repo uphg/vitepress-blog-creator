@@ -5,7 +5,7 @@ layout: page
 <Wrap class="home">
   <h1 class="title">LvHeng <Emoji /></h1>    
   <!-- <p class="description">A migrant worker with little success.</p> -->
-  <p class="description">A modestly successful migrant worker.</p>
+  <p class="description">A struggling wage worker.</p>
   <h2>Projects</h2>
   <ul>
     <li><a href="/tulip/" target="_blank">Tulip UI</a> - UI component library based on Vue3 + TS.</li>
