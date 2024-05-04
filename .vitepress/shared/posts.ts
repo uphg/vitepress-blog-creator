@@ -5,6 +5,8 @@ import fg from "fast-glob"
 import matter from "gray-matter"
 import { createDescription, getFileName } from "./utils";
 
+let cachedPosts: any[] = []
+
 export function createPagingPosts(posts, { pageSize = 10, pathPrefix = '/' }) {
   const result: any[] = []
   const pageCount = Math.ceil(posts.length / pageSize)
@@ -21,8 +23,11 @@ export function createPagingPosts(posts, { pageSize = 10, pathPrefix = '/' }) {
 }
 
 export async function getPosts() {
+  if (cachedPosts.length) return cachedPosts
+
   const rawPosts = await getRawPosts()
-  return orderBy(rawPosts, ({ date }) => date || '', ['desc'])
+  cachedPosts = orderBy(rawPosts, ({ date }) => date || '', ['desc'])
+  return cachedPosts
 }
 
 export async function getRawPosts(pathPrefix = '/post/') {
@@ -44,4 +49,27 @@ export async function getRawPosts(pathPrefix = '/post/') {
   })
 
   return posts
+}
+
+export async function getPrevOrNext(filePath) {
+  const posts = await getPosts()
+  const currentIndex = posts.findIndex(item => {
+    const to = item.to?.replace(/^\//, '')
+    const path = filePath?.replace(/\.md$/, '')
+    return to === path
+  })
+
+  const prev = currentIndex > 0 ? posts[currentIndex - 1] : void 0
+  const next = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : void 0
+
+  return {
+    prev: prev ? {
+      text: prev?.title,
+      link: prev.to
+    } : void 0,
+    next: next ? {
+      text: next?.title,
+      link: next.to
+    } : void 0
+  }
 }

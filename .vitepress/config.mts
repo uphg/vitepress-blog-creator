@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
+import { getPrevOrNext } from './shared/posts'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -49,14 +50,8 @@ export default defineConfig({
   async transformHead(context) {
   },
   async transformPageData(pageData, { siteConfig }) {
-    if (pageData.filePath === 'api-examples.md') {
-
-      pageData.frontmatter.prev = {
-        text: '首页',
-        link: '/'
-      }
-    } else {
-
-    }
+    const { prev, next } = await getPrevOrNext(pageData.filePath)
+    pageData.frontmatter.prev = prev
+    pageData.frontmatter.next = next
   }
 })
